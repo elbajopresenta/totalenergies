@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía Estratégica: Campaña TotalEnergies 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.33.0.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F5F5F5; /* Gris Claro */
+            color: #4A4A4A; /* Gris Oscuro (Texto) */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            border-left: 5px solid #0071B8; /* Azul Medio */
+        }
+        .kpi-title {
+            font-size: 1rem;
+            color: #4A4A4A;
+            font-weight: 700; /* Bold */
+        }
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 800; /* ExtraBold */
+            color: #003E5D; /* Azul Oscuro Corporativo */
+            line-height: 1.2;
+        }
+        .kpi-subtitle {
+            font-size: 0.875rem;
+            color: #6B7280;
+        }
+        .section-title {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 800; /* ExtraBold */
+            color: #003E5D; /* Azul Oscuro Corporativo */
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.75rem; /* 28px */
+            font-weight: 700; /* Bold */
+            color: #FF0000; /* Rojo TotalEnergies */
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .section-intro {
+            font-size: 1rem; /* 16px */
+            font-weight: 400; /* Regular */
+            color: #4A4A4A;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+        }
+        .card {
+             background-color: #FFFFFF;
+             border-radius: 0.75rem;
+             padding: 1.5rem;
+             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .section-highlight {
+            background-color: #003E5D; /* Azul Oscuro Corporativo */
+            color: #FFFFFF;
+        }
+        .section-highlight .section-title,
+        .section-highlight .section-subtitle,
+        .section-highlight .section-intro,
+        .section-highlight .kpi-title,
+        .section-highlight .kpi-subtitle {
+            color: #F5F5F5;
+        }
+        .section-highlight .kpi-value {
+            color: #FDE428; /* Amarillo */
+        }
+         .section-highlight .kpi-card {
+            background-color: #00527a;
+            border-left-color: #FDE428; /* Amarillo */
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.8s cubic-bezier(0.6, 0.2, 0.1, 1);
+        }
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+    </style>
+</head>
+<body>
+
+    <header class="bg-white shadow-md py-6">
+        <div class="container mx-auto px-6 relative">
+            <div class="flex justify-between items-center mb-4">
+                <img src="telogo.jpg" alt="Total Energies" class="h-12 w-auto">
+                <img src="elbajologo.jpeg" alt="El Bajo" class="h-12 w-auto">
+            </div>
+            <div class="text-center">
+                <h1 class="text-4xl" style="font-weight: 800; color: #003E5D;">Radiografía de una Campaña Estratégica</h1>
+                <p class="text-2xl" style="font-weight: 700; color: #FF0000;">TotalEnergies 2025</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="mercado" class="py-12">
+            <div class="fade-in-up">
+                <h2 class="section-title">1. El Escenario: Mercado Publicitario Argentino</h2>
+                <p class="section-intro">El mercado publicitario en Argentina muestra un crecimiento sostenido en la inversión, a pesar de la desaceleración de la inflación. En este contexto, la televisión se mantiene como el medio dominante, aunque el sector de Energía y Minería representa una porción minoritaria del total.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="card lg:col-span-3 fade-in-up delay-1">
+                    <h3 class="font-bold text-lg text-center mb-2 text-[#003E5D]">Inversión Publicitaria vs. Inflación (2023-2025)</h3>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="inversionInflacionChart"></canvas>
+                    </div>
+                </div>
+                <div class="card lg:col-span-2 fade-in-up delay-2">
+                    <h3 class="font-bold text-lg text-center mb-2 text-[#003E5D]">Share de Inversión por Medio (1er Sem. 2025)</h3>
+                    <div class="chart-container h-80 md:h-96 flex items-center justify-center">
+                        <canvas id="inversionMediosChart"></canvas>
+                    </div>
+                </div>
+                <div class="card lg:col-span-5 fade-in-up delay-3">
+                    <h3 class="font-bold text-lg text-center mb-2 text-[#003E5D]">Inversión Publicitaria por Sector (1er Sem. 2025)</h3>
+                     <p class="text-center text-sm text-gray-600 mb-4">El sector "Energía y Minería" representa el 2% del total de la inversión.</p>
+                    <div class="chart-container h-96">
+                        <canvas id="inversionSectorChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="consumidor" class="py-12 rounded-lg shadow-inner section-highlight">
+             <div class="fade-in-up">
+                <h2 class="section-title">2. El Foco: ¿Quién es el Consumidor de Lubricantes?</h2>
+                <p class="section-intro">El comprador de lubricantes es un público diverso, mayoritariamente masculino y distribuido equitativamente en el país y entre niveles socioeconómicos. Su consumo de medios está fuertemente inclinado hacia la televisión y las plataformas digitales.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+                <div class="kpi-card fade-in-up delay-1">
+                    <div class="kpi-value">5.9M</div>
+                    <div class="kpi-title">De Compradores</div>
+                    <div class="kpi-subtitle">En los últimos 12 meses</div>
+                </div>
+                <div class="kpi-card fade-in-up delay-2">
+                    <div class="kpi-value">59%</div>
+                    <div class="kpi-title">Hombres</div>
+                    <div class="kpi-subtitle">Perfil mayoritario del consumidor</div>
+                </div>
+                 <div class="kpi-card fade-in-up delay-3">
+                    <div class="kpi-value">58%</div>
+                    <div class="kpi-title">Interior del País</div>
+                    <div class="kpi-subtitle">Distribución geográfica</div>
+                </div>
+                <div class="card md:col-span-2 lg:col-span-3 bg-white fade-in-up">
+                    <h3 class="font-bold text-lg text-center mb-2 text-[#003E5D]">Consumo de Medios del Target</h3>
+                    <p class="text-center text-sm text-gray-600 mb-4">La TV Paga y el Streaming de Video son claves para alcanzar a este público.</p>
+                    <div class="chart-container h-96">
+                        <canvas id="consumoMediosChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conexion" class="py-12">
+            <div class="fade-in-up">
+                <h2 class="section-title">3. La Conexión: Rugby, el Territorio Estratégico</h2>
+                <p class="section-intro">El análisis revela una afinidad excepcionalmente fuerte entre los compradores de lubricantes y el rugby. Este público no solo consume el deporte por TV e internet, sino que también tiene una clara preferencia por plataformas de streaming específicas donde el contenido deportivo es rey.</p>
+            </div>
+            
+            <div class="my-8 rounded-lg shadow-xl overflow-hidden fade-in-up">
+                <img src="try.jpg" 
+                     alt="Visualización artística de la energía del rugby y lubricantes" 
+                     class="w-full h-auto max-h-[400px] object-cover"
+                     onerror="this.onerror=null;this.src='https://placehold.co/1200x400/000000/FFFFFF?text=Energ%C3%ADa+y+Pasi%C3%B3n';">
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                 <div class="kpi-card border-l-[#8BC53F] fade-in-up delay-1">
+                    <div class="kpi-value" style="color:#8BC53F;">42.6%</div>
+                    <div class="kpi-title">De los que vieron Rugby por TV</div>
+                    <div class="kpi-subtitle">Compraron lubricantes en el último año</div>
+                </div>
+                <div class="kpi-card border-l-[#8BC53F] fade-in-up delay-2">
+                    <div class="kpi-value" style="color:#8BC53F;">64.6%</div>
+                    <div class="kpi-title">Declara interés en Deportes</div>
+                    <div class="kpi-subtitle">Dentro de los medios de comunicación</div>
+                </div>
+                <div class="kpi-card border-l-[#8BC53F] fade-in-up delay-3">
+                    <div class="kpi-value" style="color:#8BC53F;">12%</div>
+                    <div class="kpi-title">Juega al Rugby</div>
+                    <div class="kpi-subtitle">Implicación directa con el deporte</div>
+                </div>
+            </div>
+             <div class="card fade-in-up">
+                <h3 class="font-bold text-lg text-center mb-2 text-[#003E5D]">Plataformas de Streaming más Vistas por el Target</h3>
+                <p class="text-center text-sm text-gray-600 mb-4">Netflix y Disney+ dominan las preferencias, validando la estrategia de pauta en streaming.</p>
+                <div id="streamingTreemap" class="w-full h-[500px]"></div>
+            </div>
+        </section>
+
+        <section id="ejecucion" class="py-12 rounded-lg shadow-inner bg-[#F5F5F5]">
+            <div class="fade-in-up">
+                <h2 class="section-title">4. La Ejecución: Pauta Eficiente y Competencia</h2>
+                <p class="section-intro">La campaña en ESPN (mayo-julio 2025) logró una cobertura y frecuencia notables sobre el público objetivo. En el competitivo segmento de lubricantes, donde Valvoline lidera en inversión constante, la estrategia enfocada de TotalEnergies demuestra ser una táctica inteligente para ganar visibilidad.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div class="kpi-card border-l-[#F57D27] fade-in-up delay-1">
+                    <div class="kpi-value" style="color:#F57D27;">5.04%</div>
+                    <div class="kpi-title">Cobertura del Target</div>
+                    <div class="kpi-subtitle">262.800 personas alcanzadas</div>
+                </div>
+                 <div class="kpi-card border-l-[#F57D27] fade-in-up delay-2">
+                    <div class="kpi-value" style="color:#F57D27;">3.04</div>
+                    <div class="kpi-title">Frecuencia Promedio</div>
+                    <div class="kpi-subtitle">Exposiciones por persona</div>
+                </div>
+                <div class="kpi-card border-l-[#F57D27] fade-in-up delay-3">
+                    <div class="kpi-value text-4xl" style="color:#F57D27;">~800k</div>
+                    <div class="kpi-title">Impactos Efectivos</div>
+                    <div class="kpi-subtitle">Total de contactos con la marca</div>
+                </div>
+            </div>
+            <div class="card bg-white fade-in-up">
+                <h3 class="font-bold text-lg text-center mb-2 text-[#003E5D]">Inversión en Lubricantes por Anunciante (1er Sem. 2025)</h3>
+                <div class="chart-container h-96">
+                    <canvas id="competenciaChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section id="conclusion" class="py-12">
+             <h2 class="section-subtitle fade-in-up">5. Conclusiones Clave</h2>
+             <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card border-t-4 border-[#0071B8] fade-in-up delay-1">
+                    <h3 class="font-bold text-lg text-[#003E5D] mb-2">🎯 Fuerte Afinidad con el Target Rugby</h3>
+                    <p>Se confirma una conexión directa y relevante con el consumidor de lubricantes, donde el 42,6% de los que vieron rugby por TV compraron la categoría en los últimos 12 meses.</p>
+                </div>
+                 <div class="card border-t-4 border-[#8BC53F] fade-in-up delay-2">
+                    <h3 class="font-bold text-lg text-[#003E5D] mb-2">📺 Plataformas Líderes en el Consumidor</h3>
+                    <p>La elección de medios fue acertada, ya que la TV muestra alta penetración y Netflix junto a Disney+ se posicionan como los servicios de streaming más vistos por los compradores.</p>
+                </div>
+                 <div class="card border-t-4 border-[#F57D27] fade-in-up delay-1">
+                    <h3 class="font-bold text-lg text-[#003E5D] mb-2">📈 Eficiencia y Cobertura en TV</h3>
+                    <p>La pauta en ESPN logró una cobertura del 5% del universo objetivo (262.800 personas) con una frecuencia de 3 exposiciones, generando casi 800.000 impactos efectivos.</p>
+                </div>
+                 <div class="card border-t-4 border-[#FF0000] fade-in-up delay-2">
+                    <h3 class="font-bold text-lg text-[#003E5D] mb-2">🏆 Oportunidad en Mercado Competitivo</h3>
+                    <p>En el segmento atomizado de lubricantes, la estrategia de pauta sostenida y enfocada presenta una oportunidad clara para que TotalEnergies gane participación de mercado frente a competidores.</p>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#003E5D] text-white text-center py-4 mt-8">
+        <p>&copy; 2025 TotalEnergies | Infografía Estratégica</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const FONT_COLOR = '#4A4A4A';
+            const GRID_COLOR = '#EAEAEA';
+            const PALETTE = {
+                red: '#FF0000',
+                darkBlue: '#003E5D',
+                mediumBlue: '#0071B8',
+                orange: '#F57D27',
+                yellow: '#FDE428',
+                green: '#8BC53F',
+                cyan: '#00B3E0',
+                purple: '#68348C'
+            };
+
+            const tooltipPlugin = {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            };
+
+            function wrapLabels(label) {
+                if (typeof label === 'string' && label.length > 16) {
+                    const words = label.split(' ');
+                    const lines = [];
+                    let currentLine = '';
+                    words.forEach(word => {
+                        if ((currentLine + word).length > 16) {
+                            lines.push(currentLine.trim());
+                            currentLine = '';
+                        }
+                        currentLine += word + ' ';
+                    });
+                    lines.push(currentLine.trim());
+                    return lines;
+                }
+                return label;
+            }
+
+            new Chart(document.getElementById('inversionInflacionChart'), {
+                type: 'line',
+                data: {
+                    labels: ['Ene 24', 'Feb 24', 'Mar 24', 'Abr 24', 'May 24', 'Jun 24', 'Jul 24', 'Ago 24', 'Sep 24', 'Oct 24', 'Nov 24', 'Dic 24', 'Ene 25', 'Feb 25', 'Mar 25', 'Abr 25', 'May 25', 'Jun 25'],
+                    datasets: [{
+                        label: '$ en millones de pesos',
+                        data: [130000, 150000, 170000, 180000, 200000, 240000, 260000, 270000, 275000, 280000, 330000, 300000, 220000, 280000, 300000, 320000, 350000, 410000],
+                        borderColor: PALETTE.mediumBlue,
+                        backgroundColor: 'rgba(0, 113, 184, 0.1)',
+                        yAxisID: 'y',
+                        tension: 0.3,
+                        fill: true
+                    }, {
+                        label: 'Inflación Mensual',
+                        data: [20.6, 13.2, 11.0, 8.8, 4.2, 4.6, 4.2, 4.0, 3.5, 2.7, 2.4, 2.7, 2.2, 2.4, 3.7, 2.8, 1.5, 1.6],
+                        borderColor: PALETTE.orange,
+                        yAxisID: 'y1',
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: FONT_COLOR } }, ...tooltipPlugin },
+                    scales: {
+                        x: { ticks: { color: FONT_COLOR }, grid: { color: GRID_COLOR } },
+                        y: { type: 'linear', display: true, position: 'left', title: { display: true, text: 'Inversión (Millones de $)', color: FONT_COLOR }, ticks: { color: FONT_COLOR }, grid: { color: GRID_COLOR } },
+                        y1: { type: 'linear', display: true, position: 'right', title: { display: true, text: 'Inflación (%)', color: FONT_COLOR }, ticks: { color: FONT_COLOR }, grid: { drawOnChartArea: false } }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('inversionMediosChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['TV Capital', 'Diarios Capital', 'TV Cable', 'TV Interior', 'Vía Pública', 'Radio FM', 'Radio AM', 'Internet', 'Revistas'],
+                    datasets: [{
+                        label: 'Share de Inversión',
+                        data: [57.6, 11.1, 8.1, 6.1, 5.1, 5.1, 4.0, 2.0, 1.0],
+                        backgroundColor: [PALETTE.darkBlue, PALETTE.mediumBlue, PALETTE.cyan, PALETTE.green, PALETTE.yellow, PALETTE.orange, PALETTE.purple, PALETTE.red, '#A0D468'],
+                        borderWidth: 2,
+                        borderColor: '#FFFFFF'
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: FONT_COLOR, boxWidth: 15 } }, ...tooltipPlugin } }
+            });
+            
+            new Chart(document.getElementById('inversionSectorChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['FARMACEUTICA', 'MEDIOS', 'COMERCIO Y RETAIL', 'HIGIENE Y BELLEZA', 'ALIMENTACION', ['ASOC POLITICAS', 'Y CIVILES'], ['BEBIDAS', 'ALCOHOLICAS'], ['BANCOS Y', 'FINANZAS'], 'ENERGIA Y MINERIA'].map(wrapLabels),
+                    datasets: [{
+                        label: 'Inversión (Millones de $)',
+                        data: [380000, 280000, 220000, 210000, 150000, 90000, 80000, 70000, 40000],
+                        backgroundColor: [PALETTE.darkBlue, PALETTE.mediumBlue, PALETTE.cyan, PALETTE.green, PALETTE.yellow, PALETTE.orange, PALETTE.purple, PALETTE.red, '#4FC1E9'],
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, ...tooltipPlugin },
+                    scales: {
+                        x: { ticks: { color: FONT_COLOR }, grid: { color: GRID_COLOR } },
+                        y: { ticks: { color: FONT_COLOR }, grid: { color: GRID_COLOR } }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('consumoMediosChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Internet', 'Redes sociales', 'Videos online', 'Canales de TV paga', 'Streaming de video', 'Streaming de música', 'Periódicos', 'Radio', 'Canales de TV abierta', 'Revistas', 'Cine'],
+                    datasets: [{
+                        label: 'Penetración % Últ. 7 días',
+                        data: [96.6, 94.8, 87.4, 70.4, 69.5, 56.6, 50.8, 50.3, 69.6, 28.3, 5.4],
+                        backgroundColor: PALETTE.orange,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: FONT_COLOR } }, ...tooltipPlugin },
+                    scales: {
+                        x: { ticks: { color: FONT_COLOR }, grid: { color: GRID_COLOR } },
+                        y: { title: { display: true, text: '% del Consumidor', color: FONT_COLOR }, ticks: { color: FONT_COLOR }, grid: { color: GRID_COLOR } }
+                    }
+                }
+            });
+
+            Plotly.newPlot('streamingTreemap', [{
+                type: "treemap",
+                labels: ["Netflix", "Disney+", "Prime Video", "Flow", "YouTube (pagos)", "Max", "OTROS (14)", "Paramount+", "YouTube Premium", "Pluto TV", "History", "Mercado Play", "A&E", "TyC Sports", "Apple TV+", "ESPN Play", "DIRECTV"],
+                parents: ["", "", "", "", "", "", "", "Flow", "YouTube (pagos)", "Flow", "OTROS (14)", "OTROS (14)", "OTROS (14)", "OTROS (14)", "OTROS (14)", "OTROS (14)", "OTROS (14)"],
+                values:  [100, 85, 70, 60, 55, 40, 38, 25, 22, 20, 15, 14, 12, 11, 10, 9, 8],
+                textinfo: "label+value",
+                marker: {
+                    colors: [PALETTE.red, PALETTE.darkBlue, PALETTE.mediumBlue, PALETTE.orange, PALETTE.yellow, PALETTE.cyan, PALETTE.green, PALETTE.purple, '#A0D468', '#48CFAD', '#FC6E51', '#DA4453', '#4A89DC', '#8CC152', '#37BC9B', '#G467D']
+                }
+            }], {
+                margin: {l: 0, r: 0, b: 0, t: 0},
+            });
+
+            new Chart(document.getElementById('competenciaChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['VALVOLINE', 'YPF', 'SHELL', ['TOTAL', 'ESPECIALIDADES'], ['PETRONAS', 'LUBRICANTS SA']],
+                    datasets: [{
+                        label: 'Inversión en Lubricantes (Millones de $)',
+                        data: [487.30, 153.30, 112.50, 42.70, 41.80],
+                        backgroundColor: [PALETTE.darkBlue, PALETTE.mediumBlue, PALETTE.yellow, PALETTE.red, PALETTE.green],
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, ...tooltipPlugin },
+                    scales: {
+                        x: { title: { display: true, text: 'Inversión (Millones de $)', color: FONT_COLOR }, ticks: { color: FONT_COLOR }, grid: { color: GRID_COLOR } },
+                        y: { ticks: { color: FONT_COLOR }, grid: { color: GRID_COLOR } }
+                    }
+                }
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const elementsToAnimate = document.querySelectorAll('.fade-in-up');
+            elementsToAnimate.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
