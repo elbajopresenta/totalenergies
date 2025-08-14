@@ -111,6 +111,14 @@
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
+        
+        /* --- NUEVAS CLASES PARA ESTILO NARANJA --- */
+        .kpi-card-orange {
+            border-left-color: #F77721 !important;
+        }
+        .kpi-value-orange {
+            color: #F77721 !important;
+        }
     </style>
 </head>
 <body>
@@ -164,18 +172,18 @@
                 <p class="section-intro">El comprador de lubricantes es un público diverso, mayoritariamente masculino y distribuido equitativamente en el país y entre niveles socioeconómicos. Su consumo de medios está fuertemente inclinado hacia la televisión y las plataformas digitales.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-                <div class="kpi-card fade-in-up delay-1">
-                    <div class="kpi-value">5.9M</div>
+                <div class="kpi-card kpi-card-orange fade-in-up delay-1">
+                    <div class="kpi-value kpi-value-orange">5.9M</div>
                     <div class="kpi-title">De Compradores</div>
                     <div class="kpi-subtitle">En los últimos 12 meses</div>
                 </div>
-                <div class="kpi-card fade-in-up delay-2">
-                    <div class="kpi-value">59%</div>
+                <div class="kpi-card kpi-card-orange fade-in-up delay-2">
+                    <div class="kpi-value kpi-value-orange">59%</div>
                     <div class="kpi-title">Hombres</div>
                     <div class="kpi-subtitle">Perfil mayoritario del consumidor</div>
                 </div>
-                 <div class="kpi-card fade-in-up delay-3">
-                    <div class="kpi-value">58%</div>
+                 <div class="kpi-card kpi-card-orange fade-in-up delay-3">
+                    <div class="kpi-value kpi-value-orange">58%</div>
                     <div class="kpi-title">Interior del País</div>
                     <div class="kpi-subtitle">Distribución geográfica</div>
                 </div>
@@ -474,9 +482,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
