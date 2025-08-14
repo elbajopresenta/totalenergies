@@ -240,18 +240,18 @@
                 <p class="section-intro">La campaña en ESPN (mayo-julio 2025) logró una cobertura y frecuencia notables sobre el público objetivo. En el competitivo segmento de lubricantes, donde Valvoline lidera en inversión constante, la estrategia enfocada de TotalEnergies demuestra ser una táctica inteligente para ganar visibilidad.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <div class="kpi-card border-l-[#F57D27] fade-in-up delay-1">
-                    <div class="kpi-value" style="color:#F57D27;">5.04%</div>
+                <div class="kpi-card border-l-[#003E5D] fade-in-up delay-1">
+                    <div class="kpi-value" style="color:#003E5D;">5.04%</div>
                     <div class="kpi-title">Cobertura del Target</div>
                     <div class="kpi-subtitle">262.800 personas alcanzadas</div>
                 </div>
-                 <div class="kpi-card border-l-[#F57D27] fade-in-up delay-2">
-                    <div class="kpi-value" style="color:#F57D27;">3.04</div>
+                 <div class="kpi-card border-l-[#003E5D] fade-in-up delay-2">
+                    <div class="kpi-value" style="color:#003E5D;">3.04</div>
                     <div class="kpi-title">Frecuencia Promedio</div>
                     <div class="kpi-subtitle">Exposiciones por persona</div>
                 </div>
-                <div class="kpi-card border-l-[#F57D27] fade-in-up delay-3">
-                    <div class="kpi-value text-4xl" style="color:#F57D27;">~800k</div>
+                <div class="kpi-card border-l-[#003E5D] fade-in-up delay-3">
+                    <div class="kpi-value text-4xl" style="color:#003E5D;">~800k</div>
                     <div class="kpi-title">Impactos Efectivos</div>
                     <div class="kpi-subtitle">Total de contactos con la marca</div>
                 </div>
@@ -409,13 +409,21 @@
                 }
             });
 
+            // --- Código para el gráfico de Consumo de Medios (ORDENADO) ---
+            const consumoLabels = ['Internet', 'Redes sociales', 'Videos online', 'Canales de TV paga', 'Streaming de video', 'Streaming de música', 'Periódicos', 'Radio', 'Canales de TV abierta', 'Revistas', 'Cine'];
+            const consumoData = [96.6, 94.8, 87.4, 70.4, 69.5, 56.6, 50.8, 50.3, 69.6, 28.3, 5.4];
+            const combinedData = consumoLabels.map((label, index) => ({ label: label, value: consumoData[index] }));
+            combinedData.sort((a, b) => b.value - a.value);
+            const sortedLabels = combinedData.map(item => item.label);
+            const sortedData = combinedData.map(item => item.value);
+
             new Chart(document.getElementById('consumoMediosChart'), {
                 type: 'bar',
                 data: {
-                    labels: ['Internet', 'Redes sociales', 'Videos online', 'Canales de TV paga', 'Canales de TV abierta', 'Streaming de video', 'Streaming de música', 'Periódicos', 'Radio', 'Revistas', 'Cine'],
+                    labels: sortedLabels,
                     datasets: [{
                         label: 'Penetración % Últ. 7 días',
-                        data: [96.6, 94.8, 87.4, 70.4, 69.6, 69.5, 56.6, 50.8, 50.3, 28.3, 5.4],
+                        data: sortedData,
                         backgroundColor: PALETTE.orange,
                     }]
                 },
@@ -482,6 +490,8 @@
     </script>
 </body>
 </html>
-
-
-
+what happens if i delete this block of code: 
+                 <div class="card border-t-4 border-[#F57D27] fade-in-up delay-1">
+                    <h3 class="font-bold text-lg text-[#003E5D] mb-2">📈 Eficiencia y Cobertura en TV</h3>
+                    <p>La pauta en ESPN logró una cobertura del 5% del universo objetivo (262.800 personas) con una frecuencia de 3 exposiciones, generando casi 800.000 impactos efectivos.</p>
+                </div>
