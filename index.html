@@ -412,10 +412,10 @@
             new Chart(document.getElementById('consumoMediosChart'), {
                 type: 'bar',
                 data: {
-                    labels: ['Internet', 'Redes sociales', 'Videos online', 'Canales de TV paga', 'Streaming de video', 'Streaming de música', 'Periódicos', 'Radio', 'Canales de TV abierta', 'Revistas', 'Cine'],
+                    labels: ['Internet', 'Redes sociales', 'Videos online', 'Canales de TV paga', 'Canales de TV abierta', 'Streaming de video', 'Streaming de música', 'Periódicos', 'Radio', 'Revistas', 'Cine'],
                     datasets: [{
                         label: 'Penetración % Últ. 7 días',
-                        data: [96.6, 94.8, 87.4, 70.4, 69.5, 56.6, 50.8, 50.3, 69.6, 28.3, 5.4],
+                        data: [96.6, 94.8, 87.4, 70.4, 69.6, 69.5, 56.6, 50.8, 50.3, 28.3, 5.4],
                         backgroundColor: PALETTE.orange,
                     }]
                 },
@@ -433,7 +433,7 @@
             Plotly.newPlot('streamingTreemap', [{
                 type: "treemap",
                 labels: ["Netflix", "Disney+", "Prime Video", "Flow", "YouTube (pagos)", "Max", "OTROS (14)", "Paramount+", "YouTube Premium", "Pluto TV", "History", "Mercado Play", "A&E", "TyC Sports", "Apple TV+", "ESPN Play", "DIRECTV"],
-                parents: ["", "", "", "", "", "", "", "Flow", "YouTube (pagos)", "Flow", "OTROS (14)", "OTROS (14)", "OTROS (14)", "OTROS (14)", "OTROS (14)", "OTROS (14)", "OTROS (14)"],
+                parents: ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
                 values:  [46.8, 26.4, 15.7, 11.50, 16.3, 12.6, 14.33, 4.53, 7.64, 4.88, 2.55, 3.88, 1.94, 2.87, 2.41, 1.88, 1.85],
                 textinfo: "label+value",
                 marker: {
@@ -482,5 +482,6 @@
     </script>
 </body>
 </html>
+
 
 
